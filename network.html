@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AirGuard | Network</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">◉</div>
+
+<div>
+
+<h1>AirGuard</h1>
+
+<small>
+COMPRESSED AIR INTELLIGENCE
+</small>
+
+</div>
+
+</div>
+
+
+<div class="header-right">
+
+<div class="live">
+<span class="live-dot"></span>
+SYSTEM ONLINE
+</div>
+
+<div class="clock" id="clock">
+--:--:--
+</div>
+
+</div>
+
+</header>
+
+
+<nav>
+
+<a href="index.html">
+Dashboard
+</a>
+
+<a href="network.html"
+class="active">
+Network
+</a>
+
+<a href="detection.html">
+Detection
+</a>
+
+<a href="analytics.html">
+Analytics
+</a>
+
+<a href="alerts.html">
+Alerts
+</a>
+
+</nav>
+
+
+<main>
+
+
+<div class="page-title">
+
+<h2>
+Factory Network
+</h2>
+
+<p>
+Compressed-air distribution topology
+and distributed monitoring nodes
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Air Distribution Network
+</h3>
+
+<span>
+1 COMPRESSOR · 4 ZONES · 8 NODES
+</span>
+
+</div>
+
+
+<div class="network">
+
+
+<div class="compressor">
+
+<strong>
+COMPRESSOR
+</strong>
+
+<small>
+AIR SOURCE
+</small>
+
+</div>
+
+
+<div class="pipe"
+style="
+left:11%;
+right:10%;
+top:50%;
+height:4px;
+">
+</div>
+
+
+<div class="pipe"
+style="
+left:27%;
+top:22%;
+height:56%;
+width:4px;
+">
+</div>
+
+
+<div class="pipe"
+style="
+left:64%;
+top:22%;
+height:56%;
+width:4px;
+">
+</div>
+
+
+<div class="network-zone zone-a">
+
+<h4>
+ZONE 01 · PRODUCTION
+</h4>
+
+<small>
+N1 · N2
+</small>
+
+<div class="sensor-row">
+
+<div class="sensor"
+data-node="N1">
+N1
+</div>
+
+<div class="sensor"
+data-node="N2">
+N2
+</div>
+
+</div>
+
+</div>
+
+
+<div class="network-zone zone-b">
+
+<h4>
+ZONE 02 · ASSEMBLY
+</h4>
+
+<small>
+N3 · N4
+</small>
+
+<div class="sensor-row">
+
+<div class="sensor"
+data-node="N3">
+N3
+</div>
+
+<div class="sensor"
+data-node="N4">
+N4
+</div>
+
+</div>
+
+</div>
+
+
+<div class="network-zone zone-c">
+
+<h4>
+ZONE 03 · PACKAGING
+</h4>
+
+<small>
+N5 · N6
+</small>
+
+<div class="sensor-row">
+
+<div class="sensor"
+data-node="N5">
+N5
+</div>
+
+<div class="sensor"
+data-node="N6">
+N6
+</div>
+
+</div>
+
+</div>
+
+
+<div class="network-zone zone-d">
+
+<h4>
+ZONE 04 · UTILITIES
+</h4>
+
+<small>
+N7 · N8
+</small>
+
+<div class="sensor-row">
+
+<div class="sensor"
+data-node="N7">
+N7
+</div>
+
+<div class="sensor"
+data-node="N8">
+N8
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<div class="grid grid-4">
+
+
+<div class="card">
+
+<div class="kpi-label">
+SELECTED NODE
+</div>
+
+<div
+class="kpi-value"
+id="selectedNode">
+—
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="kpi-label">
+ZONE
+</div>
+
+<div
+class="kpi-value"
+id="selectedZone">
+—
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="kpi-label">
+PRESSURE
+</div>
+
+<div
+class="kpi-value"
+id="selectedPressure">
+—
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="kpi-label">
+FLOW
+</div>
+
+<div
+class="kpi-value"
+id="selectedFlow">
+—
+</div>
+
+</div>
+
+
+</div>
+
+
+<br>
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Node Diagnostics
+</h3>
+
+<span>
+CLICK A NODE
+</span>
+
+</div>
+
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>NODE</th>
+<th>ZONE</th>
+<th>PRESSURE</th>
+<th>FLOW</th>
+<th>DEVIATION</th>
+<th>STATUS</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="nodeTable">
+</tbody>
+
+</table>
+
+
+<br>
+
+
+<button
+class="primary"
+onclick="simulateNetworkLeak()">
+
+SIMULATE LEAK AT N6
+
+</button>
+
+
+<button
+onclick="resetNetwork()">
+
+RESET
+
+</button>
+
+
+</div>
+
+
+<div class="footer">
+
+AirGuard · Factory Network Monitoring
+
+</div>
+
+
+</main>
+
+
+<script src="data.js"></script>
+
+<script src="network.js"></script>
+
+
+<script>
+
+function updateClock() {
+
+document.getElementById("clock")
+.innerText =
+new Date().toLocaleTimeString();
+
+}
+
+
+setInterval(updateClock, 1000);
+
+updateClock();
+
+
+initializeNetwork();
+
+
+setInterval(() => {
+
+updateNetwork();
+
+createNodeTable();
+
+}, 2000);
+
+</script>
+
+
+</body>
+
+</html>

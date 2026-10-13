@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AirGuard | Detection</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">◉</div>
+
+<div>
+
+<h1>AirGuard</h1>
+
+<small>
+COMPRESSED AIR INTELLIGENCE
+</small>
+
+</div>
+
+</div>
+
+
+<div class="header-right">
+
+<div class="live">
+<span class="live-dot"></span>
+SYSTEM ONLINE
+</div>
+
+<div class="clock" id="clock">
+--:--:--
+</div>
+
+</div>
+
+</header>
+
+
+<nav>
+
+<a href="index.html">
+Dashboard
+</a>
+
+<a href="network.html">
+Network
+</a>
+
+<a href="detection.html"
+class="active">
+Detection
+</a>
+
+<a href="analytics.html">
+Analytics
+</a>
+
+<a href="alerts.html">
+Alerts
+</a>
+
+</nav>
+
+
+<main>
+
+
+<div class="page-title">
+
+<h2>
+Leak Detection Engine
+</h2>
+
+<p>
+Pressure-flow anomaly detection
+and probable leakage localization
+</p>
+
+</div>
+
+
+<div class="grid grid-2">
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Detection Status
+</h3>
+
+<span>
+LIVE ANALYSIS
+</span>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+CURRENT STATUS
+</div>
+
+<div
+id="detectionStatus"
+class="status-value green">
+
+NO LEAKAGE DETECTED
+
+</div>
+
+<div
+class="status-desc"
+id="dExplanation">
+
+Sensor measurements are consistent
+with the normal operating baseline.
+
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+SUSPECTED LOCATION
+</div>
+
+<div
+id="dLocation"
+class="status-value">
+
+—
+
+</div>
+
+<div class="status-desc">
+
+Probable leakage region based on
+local anomaly and neighbouring-node
+comparison.
+
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+ANOMALY SCORE
+</div>
+
+<div
+id="dScore"
+class="status-value">
+
+8 / 100
+
+</div>
+
+</div>
+
+
+<button
+class="primary"
+onclick="runDetection()">
+
+SIMULATE LEAK EVENT
+
+</button>
+
+
+<button
+onclick="resetDetection()">
+
+RESET
+
+</button>
+
+
+</div>
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Sensor Behaviour
+</h3>
+
+<span>
+LIVE STREAM
+</span>
+
+</div>
+
+
+<div class="chart-box">
+
+<canvas
+id="detectionChart">
+</canvas>
+
+</div>
+
+
+<br>
+
+
+<div class="grid grid-3">
+
+
+<div class="status-box">
+
+<div class="status-label">
+PRESSURE
+</div>
+
+<div
+id="dPressure"
+class="status-value">
+
+7.20 bar
+
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+FLOW
+</div>
+
+<div
+id="dFlow"
+class="status-value">
+
+482 L/min
+
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+INDICATOR
+</div>
+
+<div
+id="dIndicator"
+class="status-value green">
+
+● NORMAL
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<br>
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Detection Sequence
+</h3>
+
+<span>
+SYSTEM DECISION FLOW
+</span>
+
+</div>
+
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<h4>
+1. Sensor Measurement
+</h4>
+
+<p>
+Pressure and flow data are collected
+from distributed monitoring nodes.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h4>
+2. Baseline Comparison
+</h4>
+
+<p>
+Current measurements are compared
+against expected operating behaviour.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h4>
+3. Anomaly Detection
+</h4>
+
+<p>
+Significant pressure-flow deviation
+is identified.
+</p>
+
+</div>
+
+
+<div class="timeline-item active">
+
+<h4>
+4. Neighbour Comparison
+</h4>
+
+<p>
+Nearby nodes are compared to narrow
+down the probable leakage region.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h4>
+5. Leak Localization
+</h4>
+
+<p>
+The system identifies the node/zone
+requiring physical inspection.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+AirGuard · Detection & Localization Engine
+
+</div>
+
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="data.js"></script>
+
+<script src="detection.js"></script>
+
+
+<script>
+
+function updateClock() {
+
+document.getElementById("clock")
+.innerText =
+new Date().toLocaleTimeString();
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+
+initializeDetection();
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AirGuard | Dashboard</title>
+<link rel="stylesheet" href="style.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">
+
+</div>
+
+<div>
+
+<h1>AirGuard</h1>
+
+<small>
+COMPRESSED AIR INTELLIGENCE
+</small>
+
+</div>
+
+</div>
+
+
+<div class="header-right">
+
+<div class="live">
+
+<span class="live-dot"></span>
+
+SYSTEM ONLINE
+
+</div>
+
+<div
+class="clock"
+id="clock">
+
+--:--:--
+
+</div>
+
+</div>
+
+</header>
+
+
+<nav>
+
+<a href="index.html"
+class="active">
+
+Dashboard
+
+</a>
+
+<a href="network.html">
+
+Network
+
+</a>
+
+<a href="detection.html">
+
+Detection
+
+</a>
+
+<a href="analytics.html">
+
+Analytics
+
+</a>
+
+<a href="alerts.html">
+
+Alerts
+
+</a>
+
+</nav>
+
+
+<main>
+
+
+<div class="page-title">
+
+<h2>
+Industrial Air Network Monitor
+</h2>
+
+<p>
+Real-time compressed-air condition monitoring,
+leak detection and localization
+</p>
+
+</div>
+
+
+<!-- KPI -->
+
+<div class="grid grid-4">
+
+
+<div class="card">
+
+<div class="kpi-label">
+SYSTEM PRESSURE
+</div>
+
+<div class="kpi-value">
+
+<span id="pressureValue">
+7.20
+</span>
+
+<span class="kpi-unit">
+bar
+</span>
+
+</div>
+
+<div class="kpi-sub">
+Operating target: 7.0–7.5 bar
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="kpi-label">
+NETWORK FLOW
+</div>
+
+<div class="kpi-value">
+
+<span id="flowValue">
+482
+</span>
+
+<span class="kpi-unit">
+L/min
+</span>
+
+</div>
+
+<div class="kpi-sub">
+Aggregated monitored flow
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="kpi-label">
+ESTIMATED AIR LOSS
+</div>
+
+<div class="kpi-value">
+
+<span id="lossValue">
+0
+</span>
+
+<span class="kpi-unit">
+L/min
+</span>
+
+</div>
+
+<div class="kpi-sub">
+Current abnormal contribution
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="kpi-label">
+SYSTEM STATUS
+</div>
+
+<div
+class="kpi-value green"
+id="systemStatus">
+
+NORMAL
+
+</div>
+
+<div
+class="kpi-sub"
+id="statusSub">
+
+All monitored zones normal
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<br>
+
+
+<!-- Main -->
+
+<div class="grid grid-2">
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Network Overview
+</h3>
+
+<span>
+4 ZONES · 8 NODES
+</span>
+
+</div>
+
+
+<div
+class="network"
+style="height:350px;">
+
+
+<div
+class="compressor">
+
+<strong>
+COMPRESSOR
+</strong>
+
+<small>
+AIR SOURCE
+</small>
+
+</div>
+
+
+<div
+class="pipe"
+style="
+left:11%;
+right:10%;
+top:50%;
+height:4px;
+">
+</div>
+
+
+<div
+class="pipe"
+style="
+left:27%;
+top:22%;
+height:56%;
+width:4px;
+">
+</div>
+
+
+<div
+class="pipe"
+style="
+left:64%;
+top:22%;
+height:56%;
+width:4px;
+">
+</div>
+
+
+<div
+class="network-zone zone-a">
+
+<h4>
+ZONE 01
+</h4>
+
+<small>
+PRODUCTION
+</small>
+
+</div>
+
+
+<div
+class="network-zone zone-b">
+
+<h4>
+ZONE 02
+</h4>
+
+<small>
+ASSEMBLY
+</small>
+
+</div>
+
+
+<div
+class="network-zone zone-c">
+
+<h4>
+ZONE 03
+</h4>
+
+<small>
+PACKAGING
+</small>
+
+</div>
+
+
+<div
+class="network-zone zone-d">
+
+<h4>
+ZONE 04
+</h4>
+
+<small>
+UTILITIES
+</small>
+
+</div>
+
+
+</div>
+
+
+<br>
+
+
+<div>
+
+<a href="network.html">
+
+<button class="primary">
+OPEN NETWORK
+</button>
+
+</a>
+
+<button
+onclick="triggerDashboardLeak()">
+
+SIMULATE LEAK
+
+</button>
+
+<button
+onclick="resetDashboard()">
+
+RESET
+
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- Status -->
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+System Intelligence
+</h3>
+
+<span>
+LIVE
+</span>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+ANOMALY SCORE
+</div>
+
+<div
+class="status-value"
+id="anomalyValue">
+
+8 / 100
+
+</div>
+
+<div class="status-desc">
+
+Combined indication based on
+pressure-flow behaviour and
+network comparison.
+
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+LOCALIZATION
+</div>
+
+<div
+class="status-value"
+id="dashLocation">
+
+—
+
+</div>
+
+<div class="status-desc">
+
+Probable leakage region is shown
+after an abnormal condition is detected.
+
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+MONITORING ARCHITECTURE
+</div>
+
+<div class="status-value">
+4 Zones · 8 Nodes
+</div>
+
+<div class="status-desc">
+
+Distributed monitoring allows the
+system to narrow down the probable
+leakage region.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<br>
+
+
+<!-- Chart -->
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Live Pressure & Flow Behaviour
+</h3>
+
+<span>
+SENSOR STREAM
+</span>
+
+</div>
+
+
+<div class="chart-box">
+
+<canvas
+id="dashboardChart">
+</canvas>
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<!-- Technical flow -->
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+AirGuard Detection Pipeline
+</h3>
+
+<span>
+SYSTEM LOGIC
+</span>
+
+</div>
+
+
+<div class="grid grid-4">
+
+
+<div class="status-box">
+
+<div class="status-label">
+01
+</div>
+
+<div class="status-value">
+MEASURE
+</div>
+
+<div class="status-desc">
+Pressure and flow measurements
+are continuously monitored.
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+02
+</div>
+
+<div class="status-value">
+DETECT
+</div>
+
+<div class="status-desc">
+Measurements are compared with
+expected operating behaviour.
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+03
+</div>
+
+<div class="status-value">
+LOCALIZE
+</div>
+
+<div class="status-desc">
+Neighbouring nodes are compared
+to narrow the probable region.
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+04
+</div>
+
+<div class="status-value">
+RESPOND
+</div>
+
+<div class="status-desc">
+Estimated impact and inspection
+actions are presented.
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+AirGuard · Compressed-Air Leakage
+Detection & Localization Prototype
+
+</div>
+
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="data.js"></script>
+
+<script src="dashboard.js"></script>
+
+
+<script>
+
+function updateClock() {
+
+document.getElementById("clock")
+.innerText =
+new Date().toLocaleTimeString();
+
+}
+
+
+setInterval(updateClock, 1000);
+
+updateClock();
+
+
+function updateLocation() {
+
+const location =
+document.getElementById("dashLocation");
+
+
+if (isLeakActive()) {
+
+location.innerText =
+"ZONE 03 · N6";
+
+location.className =
+"status-value red";
+
+} else {
+
+location.innerText = "—";
+
+location.className =
+"status-value";
+
+}
+
+}
+
+
+setInterval(updateLocation, 1000);
+
+
+startDashboard();
+
+</script>
+
+
+</body>
+
+</html>

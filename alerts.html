@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AirGuard | Alerts</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">◉</div>
+
+<div>
+
+<h1>AirGuard</h1>
+
+<small>
+COMPRESSED AIR INTELLIGENCE
+</small>
+
+</div>
+
+</div>
+
+
+<div class="header-right">
+
+<div class="live">
+<span class="live-dot"></span>
+SYSTEM ONLINE
+</div>
+
+<div class="clock" id="clock">
+--:--:--
+</div>
+
+</div>
+
+</header>
+
+
+<nav>
+
+<a href="index.html">
+Dashboard
+</a>
+
+<a href="network.html">
+Network
+</a>
+
+<a href="detection.html">
+Detection
+</a>
+
+<a href="analytics.html">
+Analytics
+</a>
+
+<a href="alerts.html"
+class="active">
+Alerts
+</a>
+
+</nav>
+
+
+<main>
+
+
+<div class="page-title">
+
+<h2>
+Alerts & Maintenance
+</h2>
+
+<p>
+Operational notifications and recommended
+inspection actions
+</p>
+
+</div>
+
+
+<div
+class="card alert-card"
+id="activeAlert">
+
+
+<div class="section-title">
+
+<h3>
+⚠ Active Alert
+</h3>
+
+<span>
+HIGH PRIORITY
+</span>
+
+</div>
+
+
+<div class="grid grid-3">
+
+
+<div>
+
+<div class="kpi-label">
+LOCATION
+</div>
+
+<div class="kpi-value red">
+ZONE 03
+</div>
+
+</div>
+
+
+<div>
+
+<div class="kpi-label">
+NODE
+</div>
+
+<div class="kpi-value red">
+N6
+</div>
+
+</div>
+
+
+<div>
+
+<div class="kpi-label">
+ESTIMATED LOSS
+</div>
+
+<div class="kpi-value">
+105 L/min
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<div class="grid grid-2">
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Recommended Inspection
+</h3>
+
+<span>
+FIELD ACTION
+</span>
+
+</div>
+
+
+<div class="recommendation">
+
+<strong>
+01 · Check downstream fittings
+</strong>
+
+<p>
+Inspect pipe joints and connection
+points around the identified node.
+</p>
+
+</div>
+
+
+<div class="recommendation">
+
+<strong>
+02 · Inspect flexible hoses
+</strong>
+
+<p>
+Look for cracks, loose connections
+or damaged hose sections.
+</p>
+
+</div>
+
+
+<div class="recommendation">
+
+<strong>
+03 · Inspect pneumatic equipment
+</strong>
+
+<p>
+Check equipment connected downstream
+of the suspected node.
+</p>
+
+</div>
+
+
+<div class="recommendation">
+
+<strong>
+04 · Verify after maintenance
+</strong>
+
+<p>
+Repeat measurements after maintenance
+to confirm that the anomaly has reduced.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Alert Information
+</h3>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+SEVERITY
+</div>
+
+<div
+id="severity"
+class="status-value green">
+
+NORMAL
+
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+ANOMALY SCORE
+</div>
+
+<div
+id="alertScore"
+class="status-value">
+
+8 / 100
+
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+PROBABLE REGION
+</div>
+
+<div
+id="alertLocation"
+class="status-value">
+
+—
+
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+SYSTEM ACTION
+</div>
+
+<div
+id="alertAction"
+class="status-value">
+
+MONITOR
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Maintenance Workflow
+</h3>
+
+</div>
+
+
+<div class="timeline">
+
+
+<div class="timeline-item active">
+
+<h4>
+Leak Detection
+</h4>
+
+<p>
+Abnormal sensor behaviour is identified.
+</p>
+
+</div>
+
+
+<div class="timeline-item active">
+
+<h4>
+Localization
+</h4>
+
+<p>
+Probable leakage region is narrowed
+to the affected node.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h4>
+Physical Inspection
+</h4>
+
+<p>
+Maintenance personnel inspect the
+identified region.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h4>
+Verification
+</h4>
+
+<p>
+Measurements are checked again after
+maintenance.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+AirGuard · Maintenance Response System
+
+</div>
+
+
+</main>
+
+
+<script src="data.js"></script>
+
+
+<script>
+
+function updateClock() {
+
+document.getElementById("clock")
+.innerText =
+new Date().toLocaleTimeString();
+
+}
+
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+
+function updateAlerts() {
+
+const active =
+isLeakActive();
+
+
+const severity =
+document.getElementById("severity");
+
+const score =
+document.getElementById("alertScore");
+
+const location =
+document.getElementById("alertLocation");
+
+const action =
+document.getElementById("alertAction");
+
+
+if (active) {
+
+severity.innerText =
+"HIGH";
+
+severity.className =
+"status-value red";
+
+
+score.innerText =
+"89 / 100";
+
+
+location.innerText =
+"ZONE 03 · N6";
+
+
+action.innerText =
+"INSPECTION";
+
+action.className =
+"status-value red";
+
+
+} else {
+
+severity.innerText =
+"NORMAL";
+
+severity.className =
+"status-value green";
+
+
+score.innerText =
+"8 / 100";
+
+
+location.innerText =
+"—";
+
+
+action.innerText =
+"MONITOR";
+
+action.className =
+"status-value";
+
+}
+
+}
+
+
+updateAlerts();
+
+setInterval(updateAlerts,1000);
+
+</script>
+
+
+</body>
+
+</html>

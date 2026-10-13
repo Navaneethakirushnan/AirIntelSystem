@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AirGuard | Analytics</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">◉</div>
+
+<div>
+
+<h1>AirGuard</h1>
+
+<small>
+COMPRESSED AIR INTELLIGENCE
+</small>
+
+</div>
+
+</div>
+
+
+<div class="header-right">
+
+<div class="live">
+<span class="live-dot"></span>
+SYSTEM ONLINE
+</div>
+
+<div class="clock" id="clock">
+--:--:--
+</div>
+
+</div>
+
+</header>
+
+
+<nav>
+
+<a href="index.html">
+Dashboard
+</a>
+
+<a href="network.html">
+Network
+</a>
+
+<a href="detection.html">
+Detection
+</a>
+
+<a href="analytics.html"
+class="active">
+Analytics
+</a>
+
+<a href="alerts.html">
+Alerts
+</a>
+
+</nav>
+
+
+<main>
+
+
+<div class="page-title">
+
+<h2>
+Loss & Energy Analytics
+</h2>
+
+<p>
+Quantifying the operational impact
+of compressed-air leakage
+</p>
+
+</div>
+
+
+<div class="grid grid-4">
+
+
+<div class="card">
+
+<div class="kpi-label">
+ESTIMATED AIR LOSS
+</div>
+
+<div
+class="kpi-value"
+id="dailyLoss">
+
+0 L
+
+</div>
+
+<div class="kpi-sub">
+Estimated daily loss
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="kpi-label">
+MONTHLY AIR LOSS
+</div>
+
+<div
+class="kpi-value"
+id="monthlyLoss">
+
+0 L
+
+</div>
+
+<div class="kpi-sub">
+30-day projection
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="kpi-label">
+ENERGY IMPACT
+</div>
+
+<div
+class="kpi-value"
+id="energyValue">
+
+0.0 kW
+
+</div>
+
+<div class="kpi-sub">
+Estimated additional load
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="kpi-label">
+ESTIMATED COST
+</div>
+
+<div
+class="kpi-value"
+id="costValue">
+
+₹0 / day
+
+</div>
+
+<div class="kpi-sub">
+Prototype estimation
+</div>
+
+</div>
+
+
+</div>
+
+
+<br>
+
+
+<div class="grid grid-2">
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Leak Impact Simulation
+</h3>
+
+<span>
+DEMO MODE
+</span>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+ESTIMATED AIR LOSS
+</div>
+
+<div
+id="lossDisplay"
+class="status-value">
+
+0 L/min
+
+</div>
+
+<div class="status-desc">
+
+Additional compressed-air demand
+associated with the simulated event.
+
+</div>
+
+</div>
+
+
+<button
+class="primary"
+onclick="activateAnalyticsLeak()">
+
+SIMULATE LEAK IMPACT
+
+</button>
+
+
+<button
+onclick="resetAnalytics()">
+
+RESET
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Impact Interpretation
+</h3>
+
+</div>
+
+
+<div class="recommendation">
+
+<strong>
+AIR LOSS
+</strong>
+
+<p>
+A leak can increase the amount of
+compressed air the compressor must
+deliver to maintain network demand.
+</p>
+
+</div>
+
+
+<div class="recommendation">
+
+<strong>
+ENERGY IMPACT
+</strong>
+
+<p>
+Additional compressor operation can
+create an energy penalty.
+</p>
+
+</div>
+
+
+<div class="recommendation">
+
+<strong>
+COST IMPACT
+</strong>
+
+<p>
+Actual cost should use site-specific
+compressor efficiency, operating hours
+and electricity tariff.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<div class="card">
+
+<div class="section-title">
+
+<h3>
+Impact Calculation Chain
+</h3>
+
+<span>
+CONCEPTUAL MODEL
+</span>
+
+</div>
+
+
+<div class="grid grid-4">
+
+
+<div class="status-box">
+
+<div class="status-label">
+01 · MEASURE
+</div>
+
+<div class="status-value">
+FLOW
+</div>
+
+<div class="status-desc">
+Sensor measurement
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+02 · ESTIMATE
+</div>
+
+<div class="status-value">
+AIR LOSS
+</div>
+
+<div class="status-desc">
+Abnormal contribution
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+03 · CONVERT
+</div>
+
+<div class="status-value">
+ENERGY
+</div>
+
+<div class="status-desc">
+Compressor impact
+</div>
+
+</div>
+
+
+<div class="status-box">
+
+<div class="status-label">
+04 · QUANTIFY
+</div>
+
+<div class="status-value">
+COST
+</div>
+
+<div class="status-desc">
+Operational impact
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+AirGuard · Operational Impact Analytics
+
+</div>
+
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="data.js"></script>
+
+<script src="analytics.js"></script>
+
+
+<script>
+
+function updateClock() {
+
+document.getElementById("clock")
+.innerText =
+new Date().toLocaleTimeString();
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+
+initializeAnalytics();
+
+</script>
+
+
+</body>
+
+</html>
